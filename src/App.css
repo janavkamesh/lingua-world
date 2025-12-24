@@ -1,0 +1,276 @@
+:root {
+  --bg-deep: #2c2727;
+  --glass-bg: rgba(194, 151, 151, 0.03);
+  --glass-border: rgb(23, 226, 216);
+  --emerald: #10b981;
+  --blue: #3b82f6;
+  --text-dim: #475569;
+}
+
+/* App Shell & Layout */
+.app-shell {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.mesh-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 10%, #b9b9d1 0%, #dbcece 100%);
+  z-index: -1;
+}
+
+.centered-content {
+  width: 100%;
+  max-width: 480px;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Stylish Title */
+.stylish-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 2.2rem;
+  letter-spacing: 8px;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.stylish-title span {
+  color: var(--emerald);
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+.subtitle {
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #bba7a7;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* Controls */
+.translator-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.pill {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: rgb(16, 185, 129);
+  padding: 12px 20px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.pill.source {
+  border: 4px solid rgb(16, 185, 129);
+}
+
+.pill.target {
+  border: 4px solid var(--emerald);
+}
+
+.swap-icon {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.swap-icon:hover {
+  color: #fff;
+  transform: rotate(180deg);
+}
+
+/* Stage Cards */
+.stage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.glass-card {
+  background: rgb(0, 0, 0);
+  backdrop-filter: blur(25px);
+  border: 4px solid var(--glass-border);
+  padding: 30px;
+  border-radius: 35px;
+  min-height: 160px;
+  transition: 0.4s;
+  position: relative;
+}
+
+.glass-card.active {
+  border-color: var(--blue);
+  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.15);
+}
+
+.card-label {
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.text-display {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.trans-color {
+  color: var(--emerald);
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.dim {
+  color: #bba7a7;
+}
+
+/* Mic Button */
+.mic-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: -40px 0;
+  z-index: 10;
+}
+
+.mic-btn {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  border: none;
+  background: #faf3f3;
+  color: #000;
+  font-size: 1.8rem;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mic-btn.on {
+  background: #ef4444;
+  color: #db1010;
+}
+
+.pulse-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #ef4444;
+  opacity: 0;
+}
+
+.mic-btn.on .pulse-ring {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Save Button */
+.save-btn {
+  margin-top: 25px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid var(--emerald);
+  color: var(--emerald);
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.save-btn:hover {
+  background: var(--emerald);
+  color: #000;
+}
+
+/* Vault */
+.vault-section {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.vault-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+}
+
+.vault-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vault-item {
+  background: rgba(255, 255, 255, 0.01);
+  padding: 20px;
+  border-radius: 25px;
+  border: 1px solid #f1e7e7;
+}
+
+.v-langs {
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--blue);
+  letter-spacing: 1px;
+}
+
+.v-orig {
+  font-size: 0.85rem;
+  color: #bba7a7;
+  margin-top: 5px;
+}
+
+.v-trans {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 2px;
+}
