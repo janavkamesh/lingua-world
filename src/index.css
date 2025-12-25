@@ -1,62 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  background-color: #0f0c29;
-  color: #fff;
-  overflow-x: hidden;
+  @apply bg-background text-white antialiased overflow-x-hidden;
+  /* This creates the mesh gradient background */
+  background-image: radial-gradient(circle at 50% 10%, #2c2727 0%, #111010 100%);
 }
 
-/* Moving Background Blobs */
-.bg-blob {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  overflow: hidden;
-  background: #0f0c29;
+/* Custom Scrollbar for a premium feel */
+::-webkit-scrollbar {
+  width: 8px;
 }
-
-.blob-1 {
-  position: absolute;
-  top: -10%;
-  left: -10%;
-  width: 50vw;
-  height: 50vw;
-  background: #7f00ff;
-  mix-blend-mode: screen;
-  filter: blur(80px);
-  opacity: 0.4;
-  animation: blob 7s infinite;
+::-webkit-scrollbar-track {
+  background: #111010; 
 }
-
-.blob-2 {
-  position: absolute;
-  bottom: -10%;
-  right: -10%;
-  width: 50vw;
-  height: 50vw;
-  background: #00f2ea;
-  mix-blend-mode: screen;
-  filter: blur(80px);
-  opacity: 0.3;
-  animation: blob 7s infinite 2s;
+::-webkit-scrollbar-thumb {
+  background: #2c2727; 
+  border-radius: 4px;
 }
-
-.blob-3 {
-  position: absolute;
-  bottom: 20%;
-  left: 20%;
-  width: 40vw;
-  height: 40vw;
-  background: #ff0050;
-  mix-blend-mode: screen;
-  filter: blur(100px);
-  opacity: 0.3;
-  animation: blob 7s infinite 4s;
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981; 
 }

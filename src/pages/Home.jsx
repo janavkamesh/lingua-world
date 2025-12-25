@@ -18,7 +18,7 @@ const Home = () => {
   const { isListening, transcript, toggleListening, setTranscript } = useSpeech(currentLocale);
 
   useEffect(() => {
-    const saved = localStorage.getItem('lingua_v3_vault');
+    const saved = localStorage.getItem('lingua_vault');
     if (saved) setHistory(JSON.parse(saved));
   }, []);
 
@@ -42,21 +42,16 @@ const Home = () => {
   const saveToVault = () => {
     if (!transcript || !translatedText) return;
     const newEntry = { id: Date.now(), en: transcript, tr: translatedText, src: sourceLang, tgt: targetLang };
-    const updatedHistory = [newEntry, ...history].slice(0, 15);
+    const updatedHistory = [newEntry, ...history].slice(0, 10);
     setHistory(updatedHistory);
-    localStorage.setItem('lingua_v3_vault', JSON.stringify(updatedHistory));
+    localStorage.setItem('lingua_vault', JSON.stringify(updatedHistory));
   };
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col items-center py-12 px-4 font-sans selection:bg-primary selection:text-black">
-      {/* Background Animation */}
-      <div className="bg-blob">
-        <div className="blob-1"></div>
-        <div className="blob-2"></div>
-        <div className="blob-3"></div>
-      </div>
-
-      <div className="w-full max-w-lg relative z-10 flex flex-col items-center">
+    <div className="relative min-h-screen w-full flex flex-col items-center py-12 px-4 md:px-6">
+      {/* Layout Container */}
+      <div className="w-full max-w-[500px] relative z-10 flex flex-col items-center">
+        
         <Header />
         
         <LanguageSelector 
@@ -65,14 +60,19 @@ const Home = () => {
           onSwap={handleSwap} 
         />
         
-        {/* Main Translator Area */}
-        <div className="w-full relative animate-float">
+        {/* Floating Stage */}
+        <div className="w-full relative animate-float mt-4">
           <InputCard text={transcript} isListening={isListening} langCode={sourceLang} />
+          
           <MicButton isListening={isListening} onToggle={toggleListening} />
+          
           <OutputCard translatedText={translatedText} langCode={targetLang} onSave={saveToVault} />
         </div>
 
-        <VaultHistory history={history} />
+        {/* History Section */}
+        <div className="w-full mt-20">
+          <VaultHistory history={history} />
+        </div>
       </div>
     </div>
   );

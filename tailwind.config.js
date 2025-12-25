@@ -6,37 +6,35 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: '#0f0c29', // Deepest purple-black
-        surface: 'rgba(255, 255, 255, 0.05)',
-        primary: '#00f2ea',   // Cyan Neon
-        secondary: '#ff0050', // Pink Neon
-        accent: '#7f00ff',    // Violet
-      },
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'sans-serif'],
         display: ['Montserrat', 'sans-serif'],
       },
+      colors: {
+        background: '#111010', // Deep dark background
+        surface: 'rgba(255, 255, 255, 0.03)', // Glass effect base
+        primary: '#10b981',    // Emerald Green (Your brand color)
+        secondary: '#3b82f6',  // Blue
+        accent: '#2c2727',     // Dark Card BG
+        'glass-border': 'rgba(23, 226, 216, 0.3)', // Cyan border
+      },
+      boxShadow: {
+        'glow-green': '0 0 20px rgba(16, 185, 129, 0.4)',
+        'glow-red': '0 0 30px rgba(239, 68, 68, 0.6)',
+      },
       animation: {
-        'blob': 'blob 7s infinite',
         'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'pulse-ring': 'pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite',
       },
       keyframes: {
-        blob: {
-          '0%': { transform: 'translate(0px, 0px) scale(1)' },
-          '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-          '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-          '100%': { transform: 'translate(0px, 0px) scale(1)' },
-        },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        'pulse-ring': {
+          '0%': { transform: 'scale(0.8)', opacity: '1' },
+          '100%': { transform: 'scale(2)', opacity: '0' },
         }
-      },
-      boxShadow: {
-        'neon': '0 0 20px rgba(0, 242, 234, 0.3)',
-        'neon-red': '0 0 20px rgba(255, 0, 80, 0.3)',
       }
     },
   },
