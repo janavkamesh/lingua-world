@@ -1,13 +1,12 @@
+import React from 'react';
 import Home from './pages/Home';
-import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="app-shell dark">
-      <div className="mesh-bg"></div>
+    <div className="w-full min-h-screen">
       <Home />
     </div>
   );
-}
+};
 
 export default App;
